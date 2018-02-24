@@ -13,7 +13,7 @@ import java.util.List;
  */
 
 public class StockDataAdapter extends RecyclerView.Adapter<StockUpdateViewHolder> {
-    private final List<String> lstDatas = new ArrayList<>();
+    private final List<StockUpdate> lstDatas = new ArrayList<>();
 
     @Override
     public void onBindViewHolder(StockUpdateViewHolder holder, int position, List<Object> payloads) {
@@ -34,11 +34,20 @@ public class StockDataAdapter extends RecyclerView.Adapter<StockUpdateViewHolder
 
     @Override
     public void onBindViewHolder(StockUpdateViewHolder holder, int position) {
-        holder.stockItem.setText(lstDatas.get(position));
+        StockUpdate stockUpdate = lstDatas.get(position);
+        holder.setStockSymbol(stockUpdate.getStockSymbol());
+        holder.setPrice(stockUpdate.getPrice());
+        holder.setDate(stockUpdate.getDate());
     }
 
-    public void add(String stockItem){
+   /* public void add(String stockItem){
         this.lstDatas.add(stockItem);
         notifyItemInserted(lstDatas.size()-1);
-    }
+    }*/
+
+   public void add(StockUpdate stockUpdate){
+       this.lstDatas.add(stockUpdate);
+       notifyItemInserted(lstDatas.size()-1);
+   }
+
 }
