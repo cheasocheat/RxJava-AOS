@@ -13,7 +13,7 @@ import io.reactivex.functions.Consumer;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     private LinearLayoutManager layoutManager;
     private StockDataAdapter stockDataAdapter;
@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
        stockDataAdapter = new StockDataAdapter();
        recyclerView.setAdapter(stockDataAdapter);
 
-       Observable.just("APPLE","GOOGLE","TWTR")
+       Observable.just("APPLE","GOOGLE","TWITTER", "YAHOO", "ICLOUD","SAMSUNG", "LG","NOKIA",
+               "HTC")
                .subscribe(new Consumer<String>() {
                    @Override
                    public void accept(String s) throws Exception {
